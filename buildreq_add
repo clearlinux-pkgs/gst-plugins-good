@@ -1,0 +1,9 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+gstreamer-dev
+mesa-dev
+valgrind
+libjpeg-turbo-dev
+bzip2-dev
+gdk-pixbuf
+

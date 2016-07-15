@@ -1,0 +1,16 @@
+# This file contains pkgconfig build requirements that get picked up
+# but are undesirable. One entry per line, no whitespace.
+vpx
+taglib
+speex
+shout
+libraw1394
+libsoup-2.4
+libv4l2
+libdv
+jack
+gudev-1.0
+caca
+caca)
+wavpack
+libiec61883
