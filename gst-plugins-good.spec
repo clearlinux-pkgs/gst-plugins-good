@@ -4,7 +4,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.8.2
-Release  : 2
+Release  : 3
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.8.2.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.8.2.tar.xz
 Summary  : GStreamer plug-ins with good code and licensing
@@ -18,12 +18,14 @@ BuildRequires : bzip2-dev
 BuildRequires : docbook-xml
 BuildRequires : gdk-pixbuf
 BuildRequires : gettext
+BuildRequires : glu-dev
 BuildRequires : gstreamer-dev
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : libxslt-bin
 BuildRequires : mesa-dev
+BuildRequires : orc-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(cairo)
 BuildRequires : pkgconfig(flac)
