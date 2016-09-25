@@ -30,4 +30,5 @@ liborc-0.4.so.0
 libpng16.so.16
 libpthread.so.0
 libpulse.so.0
+libsoup-2.4.so.1
 libz.so.1

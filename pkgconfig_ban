@@ -2,10 +2,8 @@
 # but are undesirable. One entry per line, no whitespace.
 vpx
 taglib
-speex
 shout
 libraw1394
-libsoup-2.4
 libv4l2
 libdv
 jack
@@ -14,3 +12,4 @@ caca
 caca)
 wavpack
 libiec61883
+speex
