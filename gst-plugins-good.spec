@@ -4,7 +4,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.10.0
-Release  : 9
+Release  : 10
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.0.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.0.tar.xz
 Summary  : GStreamer plug-ins with good code and licensing
