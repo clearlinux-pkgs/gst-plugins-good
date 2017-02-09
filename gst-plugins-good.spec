@@ -6,7 +6,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.10.3
-Release  : 14
+Release  : 15
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.3.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.3.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.3.tar.xz.asc
@@ -89,7 +89,8 @@ locales components for the gst-plugins-good package.
 
 %build
 export LANG=C
-export SOURCE_DATE_EPOCH=1486057484
+export SOURCE_DATE_EPOCH=1486656091
+unset LD_AS_NEEDED
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -101,7 +102,7 @@ export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1486057484
+export SOURCE_DATE_EPOCH=1486656091
 rm -rf %{buildroot}
 %make_install
 %find_lang gst-plugins-good-1.0
