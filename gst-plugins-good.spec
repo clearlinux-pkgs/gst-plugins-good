@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x0668CC1486C2D7B5 (slomo@debian.org)
 #
 Name     : gst-plugins-good
-Version  : 1.10.3
-Release  : 17
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.3.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.3.tar.xz
-Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.10.3.tar.xz.asc
-Summary  : GStreamer plug-ins with good code and licensing
+Version  : 1.12.0
+Release  : 18
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.0.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.0.tar.xz
+Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.0.tar.xz.asc
+Summary  : Streaming media framework, good plugins, uninstalled
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
 Requires: gst-plugins-good-lib
@@ -20,7 +20,6 @@ Requires: gst-plugins-good-locales
 BuildRequires : bzip2-dev
 BuildRequires : docbook-xml
 BuildRequires : gdk-pixbuf
-BuildRequires : gettext
 BuildRequires : glu-dev
 BuildRequires : gstreamer-dev
 BuildRequires : gtk-doc
@@ -29,7 +28,6 @@ BuildRequires : libjpeg-turbo-dev
 BuildRequires : libxslt-bin
 BuildRequires : mesa-dev
 BuildRequires : orc-dev
-BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(cairo)
 BuildRequires : pkgconfig(flac)
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
@@ -44,12 +42,10 @@ BuildRequires : speex-dev
 BuildRequires : valgrind
 
 %description
-GStreamer is a streaming media framework, based on graphs of filters which
-operate on media data. Applications using this library can do anything
-from real-time sound processing to playing videos, and just about anything
-else media-related.  Its plugin-based architecture means that new data
-types or processing capabilities can be added simply by installing new
-plug-ins.
+GStreamer 1.11.x development series
+WHAT IT IS
+----------
+This is GStreamer, a framework for streaming media.
 
 %package data
 Summary: data components for the gst-plugins-good package.
@@ -85,11 +81,14 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.10.3
+%setup -q -n gst-plugins-good-1.12.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1486671231
+export SOURCE_DATE_EPOCH=1493911660
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -97,11 +96,11 @@ make V=1  %{?_smp_mflags}
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1486671231
+export SOURCE_DATE_EPOCH=1493911660
 rm -rf %{buildroot}
 %make_install
 %find_lang gst-plugins-good-1.0
@@ -276,7 +275,7 @@ rm -rf %{buildroot}
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-rtpmanager.html
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-rtsp.html
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-shapewipe.html
-/usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-shout2send.html
+/usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-shout2.html
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-smpte.html
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-soup.html
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/gst-plugins-good-plugins-plugin-spectrum.html
@@ -502,17 +501,17 @@ rm -rf %{buildroot}
 /usr/lib64/gstreamer-1.0/libgstmultifile.so
 /usr/lib64/gstreamer-1.0/libgstmultipart.so
 /usr/lib64/gstreamer-1.0/libgstnavigationtest.so
-/usr/lib64/gstreamer-1.0/libgstoss4audio.so
+/usr/lib64/gstreamer-1.0/libgstoss4.so
 /usr/lib64/gstreamer-1.0/libgstossaudio.so
 /usr/lib64/gstreamer-1.0/libgstpng.so
-/usr/lib64/gstreamer-1.0/libgstpulse.so
+/usr/lib64/gstreamer-1.0/libgstpulseaudio.so
 /usr/lib64/gstreamer-1.0/libgstreplaygain.so
 /usr/lib64/gstreamer-1.0/libgstrtp.so
 /usr/lib64/gstreamer-1.0/libgstrtpmanager.so
 /usr/lib64/gstreamer-1.0/libgstrtsp.so
 /usr/lib64/gstreamer-1.0/libgstshapewipe.so
 /usr/lib64/gstreamer-1.0/libgstsmpte.so
-/usr/lib64/gstreamer-1.0/libgstsouphttpsrc.so
+/usr/lib64/gstreamer-1.0/libgstsoup.so
 /usr/lib64/gstreamer-1.0/libgstspectrum.so
 /usr/lib64/gstreamer-1.0/libgstudp.so
 /usr/lib64/gstreamer-1.0/libgstvideo4linux2.so
