@@ -1,0 +1,52 @@
+Configure miss: VALGRIND
+Configure miss: whether to build plugin documentation
+Configure miss: whether gcc is Clang
+Configure miss: whether more special flags are required for pthreads
+Configure miss: whether to build static plugins or not
+Configure miss: to see if Objective C compiler understands 
+Configure miss: to see if Objective C compiler understands -Wall
+Configure miss: to see if Objective C compiler understands -Wmissing-declarations
+Configure miss: to see if Objective C compiler understands -Wmissing-prototypes
+Configure miss: to see if Objective C compiler understands -Wredundant-decls
+Configure miss: to see if Objective C compiler understands -Wwrite-strings
+Configure miss: to see if Objective C compiler understands -Wold-style-definition
+Configure miss: to see if Objective C compiler understands -Winit-self
+Configure miss: to see if Objective C compiler understands -Wmissing-include-dirs
+Configure miss: to see if Objective C compiler understands -Wno-multichar
+Configure miss: to see if Objective C compiler understands -Wnested-externs
+Configure miss: DirectSound LDFLAGS
+Configure miss: mmsystem.h
+Configure miss: sys/audioio.h usability
+Configure miss: sys/audioio.h presence
+Configure miss: sys/audioio.h
+Configure miss: CoreAudio/CoreAudio.h usability
+Configure miss: CoreAudio/CoreAudio.h presence
+Configure miss: CoreAudio/CoreAudio.h
+Configure miss: CoreAudio/CoreAudioTypes.h usability
+Configure miss: CoreAudio/CoreAudioTypes.h presence
+Configure miss: CoreAudio/CoreAudioTypes.h
+Configure miss: OpenGL/gl.h usability
+Configure miss: OpenGL/gl.h presence
+Configure miss: OpenGL/gl.h
+Configure miss: GUDEV
+Configure miss: LIBV4L2
+Configure miss: aalib-config
+Configure miss: AALIB - version >= 0.11.0
+Configure miss: JACK
+Configure miss: JACK_0_120_1
+Configure miss: JACK_1_9_7
+Configure miss: jpeg_set_defaults in -ljpeg-mmx
+Configure miss: LIBCACA
+Configure miss: LIBDV
+Configure miss: process.h usability
+Configure miss: process.h presence
+Configure miss: RAW1394
+Configure miss: LIBIEC61883
+Configure miss: RAW1394
+Configure miss: avc1394_send_command in -lavc1394
+Configure miss: rom1394_free_directory in -lrom1394
+Configure miss: SHOUT2
+Configure miss: SPEEX
+Configure miss: TAGLIB
+Configure miss: VPX
+Configure miss: WAVPACK
