@@ -48,5 +48,4 @@ Configure miss: rom1394_free_directory in -lrom1394
 Configure miss: SHOUT2
 Configure miss: SPEEX
 Configure miss: TAGLIB
-Configure miss: VPX
 Configure miss: WAVPACK

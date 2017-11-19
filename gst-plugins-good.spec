@@ -6,7 +6,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.12.3
-Release  : 21
+Release  : 22
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.3.tar.xz.asc
@@ -40,6 +40,7 @@ BuildRequires : pkgconfig(gtk+-x11-3.0)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsoup-2.4)
+BuildRequires : pkgconfig(vpx)
 BuildRequires : pkgconfig(x11)
 BuildRequires : python3
 BuildRequires : speex-dev
@@ -92,9 +93,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505777057
+export SOURCE_DATE_EPOCH=1511060951
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %check
 export LANG=C
@@ -104,7 +105,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1505777057
+export SOURCE_DATE_EPOCH=1511060951
 rm -rf %{buildroot}
 %make_install
 %find_lang gst-plugins-good-1.0
@@ -117,6 +118,7 @@ rm -rf %{buildroot}
 /usr/share/gstreamer-1.0/presets/GstIirEqualizer10Bands.prs
 /usr/share/gstreamer-1.0/presets/GstIirEqualizer3Bands.prs
 /usr/share/gstreamer-1.0/presets/GstQTMux.prs
+/usr/share/gstreamer-1.0/presets/GstVP8Enc.prs
 
 %files doc
 %defattr(-,root,root,-)
@@ -523,6 +525,7 @@ rm -rf %{buildroot}
 /usr/lib64/gstreamer-1.0/libgstvideocrop.so
 /usr/lib64/gstreamer-1.0/libgstvideofilter.so
 /usr/lib64/gstreamer-1.0/libgstvideomixer.so
+/usr/lib64/gstreamer-1.0/libgstvpx.so
 /usr/lib64/gstreamer-1.0/libgstwavenc.so
 /usr/lib64/gstreamer-1.0/libgstwavparse.so
 /usr/lib64/gstreamer-1.0/libgstximagesrc.so
