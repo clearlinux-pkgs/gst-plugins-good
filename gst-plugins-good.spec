@@ -6,7 +6,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.12.4
-Release  : 23
+Release  : 24
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.4.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.4.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.12.4.tar.xz.asc
@@ -93,7 +93,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512739386
+export SOURCE_DATE_EPOCH=1512740343
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -105,7 +105,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1512739386
+export SOURCE_DATE_EPOCH=1512740343
 rm -rf %{buildroot}
 %make_install
 %find_lang gst-plugins-good-1.0
@@ -519,6 +519,7 @@ rm -rf %{buildroot}
 /usr/lib64/gstreamer-1.0/libgstsmpte.so
 /usr/lib64/gstreamer-1.0/libgstsoup.so
 /usr/lib64/gstreamer-1.0/libgstspectrum.so
+/usr/lib64/gstreamer-1.0/libgstspeex.so
 /usr/lib64/gstreamer-1.0/libgstudp.so
 /usr/lib64/gstreamer-1.0/libgstvideo4linux2.so
 /usr/lib64/gstreamer-1.0/libgstvideobox.so

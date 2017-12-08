@@ -46,6 +46,5 @@ Configure miss: RAW1394
 Configure miss: avc1394_send_command in -lavc1394
 Configure miss: rom1394_free_directory in -lrom1394
 Configure miss: SHOUT2
-Configure miss: SPEEX
 Configure miss: TAGLIB
 Configure miss: WAVPACK
