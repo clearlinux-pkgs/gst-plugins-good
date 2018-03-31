@@ -12,3 +12,5 @@ caca)
 wavpack
 libiec61883
 speex
+gstreamer-gl-[$GST_API_VERSION
+twolame

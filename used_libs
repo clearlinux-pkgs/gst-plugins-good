@@ -1,4 +1,8 @@
 libFLAC.so.8
+libQt5Core.so.5
+libQt5Gui.so.5
+libQt5Qml.so.5
+libQt5Quick.so.5
 libX11.so.6
 libXdamage.so.1
 libXext.so.6
@@ -7,6 +11,8 @@ libbz2.so.0
 libc.so.6
 libcairo-gobject.so.2
 libcairo.so.2
+libgcc_s.so.1
+libgdk-3.so.0
 libgdk_pixbuf-2.0.so.0
 libgio-2.0.so.0
 libglib-2.0.so.0
@@ -15,6 +21,7 @@ libgstallocators-1.0.so.0
 libgstaudio-1.0.so.0
 libgstbase-1.0.so.0
 libgstfft-1.0.so.0
+libgstgl-1.0.so.0
 libgstnet-1.0.so.0
 libgstpbutils-1.0.so.0
 libgstreamer-1.0.so.0
@@ -24,13 +31,16 @@ libgstrtsp-1.0.so.0
 libgstsdp-1.0.so.0
 libgsttag-1.0.so.0
 libgstvideo-1.0.so.0
+libgtk-3.so.0
 libjpeg.so.62
 libm.so.6
+libmpg123.so.0
 liborc-0.4.so.0
 libpng16.so.16
 libpthread.so.0
 libpulse.so.0
 libsoup-2.4.so.1
 libspeex.so.1
-libvpx.so.4
+libstdc++.so.6
+libvpx.so.5
 libz.so.1
