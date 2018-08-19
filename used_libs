@@ -42,5 +42,6 @@ libpulse.so.0
 libsoup-2.4.so.1
 libspeex.so.1
 libstdc++.so.6
+libtag.so.1
 libvpx.so.5
 libz.so.1

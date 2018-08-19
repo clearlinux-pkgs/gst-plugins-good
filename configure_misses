@@ -46,6 +46,5 @@ Configure miss: uic-qt5
 Configure miss: QT_X11
 Configure miss: QT_WAYLAND
 Configure miss: SHOUT2
-Configure miss: TAGLIB
 Configure miss: TWOLAME
 Configure miss: WAVPACK

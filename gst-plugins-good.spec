@@ -6,7 +6,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.14.2
-Release  : 32
+Release  : 33
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.2.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.2.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.2.tar.xz.asc
@@ -45,6 +45,7 @@ BuildRequires : pkgconfig(libmpg123)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsoup-2.4)
+BuildRequires : pkgconfig(taglib)
 BuildRequires : pkgconfig(vpx)
 BuildRequires : pkgconfig(x11)
 BuildRequires : qtbase-extras
@@ -107,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1532092200
+export SOURCE_DATE_EPOCH=1534699850
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -119,7 +120,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1532092200
+export SOURCE_DATE_EPOCH=1534699850
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/gst-plugins-good
 cp COPYING %{buildroot}/usr/share/doc/gst-plugins-good/COPYING
@@ -559,6 +560,7 @@ cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/doc/gst-plugins-good/gst_rtp
 /usr/lib64/gstreamer-1.0/libgstsoup.so
 /usr/lib64/gstreamer-1.0/libgstspectrum.so
 /usr/lib64/gstreamer-1.0/libgstspeex.so
+/usr/lib64/gstreamer-1.0/libgsttaglib.so
 /usr/lib64/gstreamer-1.0/libgstudp.so
 /usr/lib64/gstreamer-1.0/libgstvideo4linux2.so
 /usr/lib64/gstreamer-1.0/libgstvideobox.so
