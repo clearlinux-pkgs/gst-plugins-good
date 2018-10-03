@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.14.3
-Release  : 34
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.3.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.3.tar.xz
-Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.3.tar.xz.asc
+Version  : 1.14.4
+Release  : 35
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz
+Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz.asc
 Summary  : Streaming media framework, good plugins, uninstalled
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
@@ -18,6 +18,7 @@ Requires: gst-plugins-good-license
 Requires: gst-plugins-good-data
 Requires: gst-plugins-good-locales
 BuildRequires : buildreq-cmake
+BuildRequires : buildreq-kde
 BuildRequires : buildreq-meson
 BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
@@ -103,14 +104,14 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.14.3
+%setup -q -n gst-plugins-good-1.14.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537209206
+export SOURCE_DATE_EPOCH=1538583578
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -122,7 +123,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1537209206
+export SOURCE_DATE_EPOCH=1538583578
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/gst-plugins-good
 cp COPYING %{buildroot}/usr/share/doc/gst-plugins-good/COPYING
@@ -576,7 +577,7 @@ cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/doc/gst-plugins-good/gst_rtp
 /usr/lib64/gstreamer-1.0/libgsty4menc.so
 
 %files license
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/doc/gst-plugins-good/COPYING
 /usr/share/doc/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
 
