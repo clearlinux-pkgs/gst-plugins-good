@@ -6,17 +6,17 @@
 #
 Name     : gst-plugins-good
 Version  : 1.14.4
-Release  : 35
+Release  : 36
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.14.4.tar.xz.asc
 Summary  : Streaming media framework, good plugins, uninstalled
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
-Requires: gst-plugins-good-lib
-Requires: gst-plugins-good-license
-Requires: gst-plugins-good-data
-Requires: gst-plugins-good-locales
+Requires: gst-plugins-good-data = %{version}-%{release}
+Requires: gst-plugins-good-lib = %{version}-%{release}
+Requires: gst-plugins-good-license = %{version}-%{release}
+Requires: gst-plugins-good-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : buildreq-meson
@@ -50,10 +50,12 @@ BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(taglib)
 BuildRequires : pkgconfig(vpx)
+BuildRequires : pkgconfig(wavpack)
 BuildRequires : pkgconfig(x11)
 BuildRequires : qtbase-extras
 BuildRequires : speex-dev
 BuildRequires : valgrind
+BuildRequires : wavpack-dev
 
 %description
 GStreamer 1.13.x development series
@@ -111,8 +113,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538583578
-%configure --disable-static
+export SOURCE_DATE_EPOCH=1547581198
+%reconfigure --disable-static
 make  %{?_smp_mflags}
 
 %check
@@ -123,11 +125,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1538583578
+export SOURCE_DATE_EPOCH=1547581198
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/gst-plugins-good
-cp COPYING %{buildroot}/usr/share/doc/gst-plugins-good/COPYING
-cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/doc/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
+cp COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/COPYING
+cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
 %make_install
 %find_lang gst-plugins-good-1.0
 
@@ -572,14 +574,15 @@ cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/doc/gst-plugins-good/gst_rtp
 /usr/lib64/gstreamer-1.0/libgstvideomixer.so
 /usr/lib64/gstreamer-1.0/libgstvpx.so
 /usr/lib64/gstreamer-1.0/libgstwavenc.so
+/usr/lib64/gstreamer-1.0/libgstwavpack.so
 /usr/lib64/gstreamer-1.0/libgstwavparse.so
 /usr/lib64/gstreamer-1.0/libgstximagesrc.so
 /usr/lib64/gstreamer-1.0/libgsty4menc.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/doc/gst-plugins-good/COPYING
-/usr/share/doc/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
+/usr/share/package-licenses/gst-plugins-good/COPYING
+/usr/share/package-licenses/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
 
 %files locales -f gst-plugins-good-1.0.lang
 %defattr(-,root,root,-)

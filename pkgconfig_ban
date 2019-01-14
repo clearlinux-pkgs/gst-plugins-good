@@ -7,8 +7,6 @@ libdv
 jack
 gudev-1.0
 caca
-caca)
-wavpack
 libiec61883
 speex
 gstreamer-gl-[$GST_API_VERSION
