@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.15.1
-Release  : 43
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.1.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.1.tar.xz
-Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.1.tar.xz.asc
+Version  : 1.15.2
+Release  : 45
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.2.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.2.tar.xz
+Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.2.tar.xz.asc
 Summary  : Streaming media framework, good plugins, uninstalled
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
@@ -56,7 +56,6 @@ BuildRequires : qtbase-extras
 BuildRequires : speex-dev
 BuildRequires : valgrind
 BuildRequires : wavpack-dev
-Patch1: 0001-Revert-pulsesrc-Move-to-extended-stream-API.patch
 
 %description
 GStreamer 1.15.x development series
@@ -107,15 +106,15 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.15.1
-%patch1 -p1
+%setup -q -n gst-plugins-good-1.15.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549934991
+export SOURCE_DATE_EPOCH=1551389872
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %reconfigure --disable-static
 make  %{?_smp_mflags}
 
@@ -127,7 +126,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1549934991
+export SOURCE_DATE_EPOCH=1551389872
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
 cp COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/COPYING
