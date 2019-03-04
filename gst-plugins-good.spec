@@ -6,11 +6,11 @@
 #
 Name     : gst-plugins-good
 Version  : 1.15.2
-Release  : 45
+Release  : 46
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.2.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.2.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.15.2.tar.xz.asc
-Summary  : Streaming media framework, good plugins, uninstalled
+Summary  : GStreamer Multimedia Framework Good Plugins
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
 Requires: gst-plugins-good-data = %{version}-%{release}
@@ -58,10 +58,18 @@ BuildRequires : valgrind
 BuildRequires : wavpack-dev
 
 %description
-GStreamer 1.15.x development series
-WHAT IT IS
-----------
-This is GStreamer, a framework for streaming media.
+The Smoke Codec
+---------------
+This is a very simple compression algorithm I was toying with when doing a
+Java based player. Decoding a JPEG in Java has acceptable speed so this codec
+tries to exploit that feature. The algorithm first compares the last and the
+new image and finds all 16x16 blocks that have a squared difference bigger than
+a configurable threshold. Then all these blocks are compressed into an NxM JPEG.
+The quality of the JPEG is inversely proportional to the number of blocks, this
+way, the picture quality degrades with heavy motion scenes but the bitrate stays
+more or less constant.
+Decoding decompresses the JPEG and then updates the old picture with the new
+blocks.
 
 %package data
 Summary: data components for the gst-plugins-good package.
@@ -77,6 +85,14 @@ Group: Documentation
 
 %description doc
 doc components for the gst-plugins-good package.
+
+
+%package extras
+Summary: extras components for the gst-plugins-good package.
+Group: Default
+
+%description extras
+extras components for the gst-plugins-good package.
 
 
 %package lib
@@ -113,8 +129,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551389872
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1551712135
 %reconfigure --disable-static
 make  %{?_smp_mflags}
 
@@ -126,7 +141,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1551389872
+export SOURCE_DATE_EPOCH=1551712135
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
 cp COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/COPYING
@@ -514,8 +529,13 @@ cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/up-insensitive.png
 /usr/share/gtk-doc/html/gst-plugins-good-plugins-1.0/up.png
 
+%files extras
+%defattr(-,root,root,-)
+/usr/lib64/gstreamer-1.0/libgstqmlgl.so
+
 %files lib
 %defattr(-,root,root,-)
+%exclude /usr/lib64/gstreamer-1.0/libgstqmlgl.so
 /usr/lib64/gstreamer-1.0/libgstalaw.so
 /usr/lib64/gstreamer-1.0/libgstalpha.so
 /usr/lib64/gstreamer-1.0/libgstalphacolor.so
@@ -556,7 +576,6 @@ cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins
 /usr/lib64/gstreamer-1.0/libgstossaudio.so
 /usr/lib64/gstreamer-1.0/libgstpng.so
 /usr/lib64/gstreamer-1.0/libgstpulseaudio.so
-/usr/lib64/gstreamer-1.0/libgstqmlgl.so
 /usr/lib64/gstreamer-1.0/libgstreplaygain.so
 /usr/lib64/gstreamer-1.0/libgstrtp.so
 /usr/lib64/gstreamer-1.0/libgstrtpmanager.so
