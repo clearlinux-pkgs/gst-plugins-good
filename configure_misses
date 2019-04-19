@@ -23,7 +23,6 @@ Configure miss: OpenGL/gl.h usability
 Configure miss: OpenGL/gl.h presence
 Configure miss: OpenGL/gl.h
 Configure miss: GUDEV
-Configure miss: LIBV4L2
 Configure miss: aalib-config
 Configure miss: AALIB - version >= 0.11.0
 Configure miss: JACK
