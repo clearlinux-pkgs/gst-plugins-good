@@ -6,11 +6,11 @@
 #
 Name     : gst-plugins-good
 Version  : 1.16.0
-Release  : 49
+Release  : 50
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz.asc
-Summary  : GStreamer Multimedia Framework Good Plugins
+Summary  : GStreamer open-source multimedia framework good plugins
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
 Requires: gst-plugins-good-data = %{version}-%{release}
@@ -130,7 +130,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555680357
+export SOURCE_DATE_EPOCH=1557093901
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %reconfigure --disable-static
 make  %{?_smp_mflags}
 
@@ -142,7 +149,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1555680357
+export SOURCE_DATE_EPOCH=1557093901
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
 cp COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/COPYING
