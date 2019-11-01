@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.16.0
-Release  : 52
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz
-Source1 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.0.tar.xz.asc
+Version  : 1.16.1
+Release  : 53
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.1.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.1.tar.xz
+Source1 : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.1.tar.xz.asc
 Summary  : Streaming media framework, good plugins, uninstalled
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1
@@ -115,14 +115,15 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.16.0
+%setup -q -n gst-plugins-good-1.16.1
+cd %{_builddir}/gst-plugins-good-1.16.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1568073040
+export SOURCE_DATE_EPOCH=1572633266
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -142,11 +143,11 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1568073040
+export SOURCE_DATE_EPOCH=1572633266
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
-cp COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/COPYING
-cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
+cp %{_builddir}/gst-plugins-good-1.16.1/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
+cp %{_builddir}/gst-plugins-good-1.16.1/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
 %make_install
 %find_lang gst-plugins-good-1.0
 
@@ -601,8 +602,8 @@ cp gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/gst-plugins-good/COPYING
-/usr/share/package-licenses/gst-plugins-good/gst_rtp_dboolhuff.LICENSE
+/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
+/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
 
 %files locales -f gst-plugins-good-1.0.lang
 %defattr(-,root,root,-)
