@@ -1,13 +1,14 @@
 # This file contains pkgconfig build requirements that get picked up
 # but are undesirable. One entry per line, no whitespace.
-shout
+caca
+gstreamer-gl-[$GST_API_VERSION
+gudev-1.0
+jack
+libavc1394
+libdv
+libiec61883
 libraw1394
 libv4l2
-libdv
-jack
-gudev-1.0
-caca
-libiec61883
+shout
 speex
-gstreamer-gl-[$GST_API_VERSION
 twolame

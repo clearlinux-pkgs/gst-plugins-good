@@ -1,15 +1,16 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-gstreamer-dev
-mesa-dev
-valgrind
-libjpeg-turbo-dev
+buildreq-kde
 bzip2-dev
 gdk-pixbuf
 glu-dev
-orc-dev
-speex-dev
+gstreamer-dev
+libjpeg-turbo-dev
+mesa-dev
 mpg123-dev
+orc-dev
 qtbase-extras
-buildreq-kde
+speex-dev
+v4l-utils-dev
+valgrind
 wavpack-dev
