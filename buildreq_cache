@@ -1,0 +1,11 @@
+1.18.0
+libsoup-dev
+nasm-bin
+pkgconfig(cairo-gobject)
+pkgconfig(flac)
+pkgconfig(gdk-pixbuf-2.0)
+pkgconfig(gtk+-3.0)
+pkgconfig(libpng)
+pkgconfig(libpulse)
+pkgconfig(libsoup-2.4)
+pkgconfig(taglib)

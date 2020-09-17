@@ -5,14 +5,14 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.16.2
-Release  : 55
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.2.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.2.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.16.2.tar.xz.asc
-Summary  : Streaming media framework, good plugins, uninstalled
+Version  : 1.18.0
+Release  : 56
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.0.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.0.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.0.tar.xz.asc
+Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause LGPL-2.1
+License  : BSD-3-Clause GPL-2.0 LGPL-2.1 MIT
 Requires: gst-plugins-good-data = %{version}-%{release}
 Requires: gst-plugins-good-lib = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
@@ -22,37 +22,26 @@ BuildRequires : buildreq-kde
 BuildRequires : buildreq-meson
 BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
-BuildRequires : docbook-xml
 BuildRequires : gdk-pixbuf
 BuildRequires : glu-dev
 BuildRequires : gstreamer-dev
-BuildRequires : gtk-doc
-BuildRequires : gtk-doc-dev
 BuildRequires : libjpeg-turbo-dev
-BuildRequires : libxslt-bin
+BuildRequires : libsoup-dev
 BuildRequires : mesa-dev
 BuildRequires : mpg123-dev
+BuildRequires : nasm-bin
 BuildRequires : orc-dev
-BuildRequires : pkgconfig(Qt5Core)
-BuildRequires : pkgconfig(Qt5Gui)
-BuildRequires : pkgconfig(Qt5Qml)
-BuildRequires : pkgconfig(Qt5Quick)
-BuildRequires : pkgconfig(cairo)
 BuildRequires : pkgconfig(cairo-gobject)
 BuildRequires : pkgconfig(flac)
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
 BuildRequires : pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires : pkgconfig(gtk+-3.0)
-BuildRequires : pkgconfig(gtk+-x11-3.0)
-BuildRequires : pkgconfig(libmpg123)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(taglib)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(vpx)
-BuildRequires : pkgconfig(wavpack)
-BuildRequires : pkgconfig(x11)
 BuildRequires : qtbase-extras
 BuildRequires : speex-dev
 BuildRequires : v4l-utils-dev
@@ -60,7 +49,7 @@ BuildRequires : valgrind
 BuildRequires : wavpack-dev
 
 %description
-GStreamer 1.16.x stable series
+GStreamer 1.18.x stable series
 WHAT IT IS
 ----------
 This is GStreamer, a framework for streaming media.
@@ -108,22 +97,22 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.16.2
-cd %{_builddir}/gst-plugins-good-1.16.2
+%setup -q -n gst-plugins-good-1.18.0
+cd %{_builddir}/gst-plugins-good-1.18.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580510206
+export SOURCE_DATE_EPOCH=1600383384
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddir
 ninja -v -C builddir
@@ -137,8 +126,10 @@ meson test -C builddir || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
-cp %{_builddir}/gst-plugins-good-1.16.2/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
-cp %{_builddir}/gst-plugins-good-1.16.2/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
+cp %{_builddir}/gst-plugins-good-1.18.0/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
+cp %{_builddir}/gst-plugins-good-1.18.0/gst/effectv/LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
+cp %{_builddir}/gst-plugins-good-1.18.0/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
+cp %{_builddir}/gst-plugins-good-1.18.0/gst/rtsp/COPYING.MIT %{buildroot}/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gst-plugins-good-1.0
 
@@ -225,7 +216,9 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
+/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
 /usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
+/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
 
 %files locales -f gst-plugins-good-1.0.lang
 %defattr(-,root,root,-)
