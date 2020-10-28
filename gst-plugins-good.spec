@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.18.0
-Release  : 57
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.0.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.0.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.0.tar.xz.asc
+Version  : 1.18.1
+Release  : 58
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.1.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.1.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.1.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1 MIT
@@ -97,15 +97,15 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.18.0
-cd %{_builddir}/gst-plugins-good-1.18.0
+%setup -q -n gst-plugins-good-1.18.1
+cd %{_builddir}/gst-plugins-good-1.18.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1600383384
+export SOURCE_DATE_EPOCH=1603926583
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -126,10 +126,10 @@ meson test -C builddir || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
-cp %{_builddir}/gst-plugins-good-1.18.0/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
-cp %{_builddir}/gst-plugins-good-1.18.0/gst/effectv/LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
-cp %{_builddir}/gst-plugins-good-1.18.0/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
-cp %{_builddir}/gst-plugins-good-1.18.0/gst/rtsp/COPYING.MIT %{buildroot}/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
+cp %{_builddir}/gst-plugins-good-1.18.1/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
+cp %{_builddir}/gst-plugins-good-1.18.1/gst/effectv/LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
+cp %{_builddir}/gst-plugins-good-1.18.1/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
+cp %{_builddir}/gst-plugins-good-1.18.1/gst/rtsp/COPYING.MIT %{buildroot}/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gst-plugins-good-1.0
 
