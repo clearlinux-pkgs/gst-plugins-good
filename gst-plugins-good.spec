@@ -6,7 +6,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.18.5
-Release  : 62
+Release  : 63
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.5.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.5.tar.xz
 Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.5.tar.xz.asc
@@ -14,6 +14,7 @@ Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1 MIT
 Requires: gst-plugins-good-data = %{version}-%{release}
+Requires: gst-plugins-good-filemap = %{version}-%{release}
 Requires: gst-plugins-good-lib = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
 Requires: gst-plugins-good-locales = %{version}-%{release}
@@ -70,11 +71,20 @@ Group: Default
 extras components for the gst-plugins-good package.
 
 
+%package filemap
+Summary: filemap components for the gst-plugins-good package.
+Group: Default
+
+%description filemap
+filemap components for the gst-plugins-good package.
+
+
 %package lib
 Summary: lib components for the gst-plugins-good package.
 Group: Libraries
 Requires: gst-plugins-good-data = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
+Requires: gst-plugins-good-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gst-plugins-good package.
@@ -99,13 +109,16 @@ locales components for the gst-plugins-good package.
 %prep
 %setup -q -n gst-plugins-good-1.18.5
 cd %{_builddir}/gst-plugins-good-1.18.5
+pushd ..
+cp -a gst-plugins-good-1.18.5 buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631204769
+export SOURCE_DATE_EPOCH=1634314497
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -116,13 +129,15 @@ export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddir
 ninja -v -C builddir
+CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddiravx2
+ninja -v -C builddiravx2
 
 %check
 export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-meson test -C builddir || :
+meson test -C builddir --print-errorlogs || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
@@ -130,8 +145,10 @@ cp %{_builddir}/gst-plugins-good-1.18.5/COPYING %{buildroot}/usr/share/package-l
 cp %{_builddir}/gst-plugins-good-1.18.5/gst/effectv/LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
 cp %{_builddir}/gst-plugins-good-1.18.5/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
 cp %{_builddir}/gst-plugins-good-1.18.5/gst/rtsp/COPYING.MIT %{buildroot}/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
+DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot} ninja -C builddir install
 %find_lang gst-plugins-good-1.0
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -146,6 +163,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files extras
 %defattr(-,root,root,-)
 /usr/lib64/gstreamer-1.0/libgstqmlgl.so
+
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-gst-plugins-good
 
 %files lib
 %defattr(-,root,root,-)
@@ -212,6 +233,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gstreamer-1.0/libgstwavparse.so
 /usr/lib64/gstreamer-1.0/libgstximagesrc.so
 /usr/lib64/gstreamer-1.0/libgsty4menc.so
+/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
