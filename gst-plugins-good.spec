@@ -5,14 +5,14 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.18.6
-Release  : 66
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.6.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.6.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.18.6.tar.xz.asc
+Version  : 1.20.0
+Release  : 67
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.0.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.0.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause GPL-2.0 LGPL-2.1 MIT
+License  : BSD-3-Clause LGPL-2.1 MIT
 Requires: gst-plugins-good-data = %{version}-%{release}
 Requires: gst-plugins-good-filemap = %{version}-%{release}
 Requires: gst-plugins-good-lib = %{version}-%{release}
@@ -40,6 +40,7 @@ BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsoup-2.4)
+BuildRequires : pkgconfig(libsoup-3.0)
 BuildRequires : pkgconfig(taglib)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(vpx)
@@ -50,7 +51,7 @@ BuildRequires : valgrind
 BuildRequires : wavpack-dev
 
 %description
-GStreamer 1.18.x stable series
+GStreamer 1.20.x stable series
 WHAT IT IS
 ----------
 This is GStreamer, a framework for streaming media.
@@ -107,13 +108,13 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.18.6
-cd %{_builddir}/gst-plugins-good-1.18.6
+%setup -q -n gst-plugins-good-1.20.0
+cd %{_builddir}/gst-plugins-good-1.20.0
 pushd ..
-cp -a gst-plugins-good-1.18.6 buildavx2
+cp -a gst-plugins-good-1.20.0 buildavx2
 popd
 pushd ..
-cp -a gst-plugins-good-1.18.6 buildavx512
+cp -a gst-plugins-good-1.20.0 buildavx512
 popd
 
 %build
@@ -121,7 +122,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643840094
+export SOURCE_DATE_EPOCH=1643989738
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -146,10 +147,9 @@ meson test -C builddir --print-errorlogs || :
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/gst-plugins-good
-cp %{_builddir}/gst-plugins-good-1.18.6/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
-cp %{_builddir}/gst-plugins-good-1.18.6/gst/effectv/LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
-cp %{_builddir}/gst-plugins-good-1.18.6/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
-cp %{_builddir}/gst-plugins-good-1.18.6/gst/rtsp/COPYING.MIT %{buildroot}/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
+cp %{_builddir}/gst-plugins-good-1.20.0/COPYING %{buildroot}/usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
+cp %{_builddir}/gst-plugins-good-1.20.0/gst/rtp/dboolhuff.LICENSE %{buildroot}/usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
+cp %{_builddir}/gst-plugins-good-1.20.0/gst/rtsp/COPYING.MIT %{buildroot}/usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
 DESTDIR=%{buildroot}-v3 ninja -C builddiravx2 install
 DESTDIR=%{buildroot}-v4 ninja -C builddiravx512 install
 DESTDIR=%{buildroot} ninja -C builddir install
@@ -245,7 +245,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/gst-plugins-good/057705e31a95ff560d92f8abc2e62d2894fba796
-/usr/share/package-licenses/gst-plugins-good/148c41e285a7a338cda57278ae0974f368aa480e
 /usr/share/package-licenses/gst-plugins-good/545f380fb332eb41236596500913ff8d582e3ead
 /usr/share/package-licenses/gst-plugins-good/f6e583b41a8e91303bf19c8b17c0086872de5977
 
