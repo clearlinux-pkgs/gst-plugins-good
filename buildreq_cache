@@ -1,4 +1,4 @@
-1.20.0
+1.20.1
 libsoup-dev
 nasm-bin
 pkgconfig(cairo-gobject)
@@ -9,5 +9,4 @@ pkgconfig(libpng)
 pkgconfig(libpulse)
 pkgconfig(libsoup-2.4)
 pkgconfig(libsoup-3.0)
-pkgconfig(mp3lame)
 pkgconfig(taglib)
