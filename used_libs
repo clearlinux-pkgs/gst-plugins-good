@@ -1,11 +1,5 @@
 libFLAC.so.8
 libGLESv2.so.2
-libQt5Core.so.5
-libQt5Gui.so.5
-libQt5Qml.so.5
-libQt5Quick.so.5
-libQt5WaylandClient.so.5
-libQt5X11Extras.so.5
 libX11.so.6
 libbz2.so.1.0
 libc.so.6
