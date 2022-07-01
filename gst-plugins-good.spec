@@ -6,7 +6,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.20.3
-Release  : 72
+Release  : 73
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.3.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.3.tar.xz
 Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.3.tar.xz.asc
@@ -14,6 +14,7 @@ Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1 MIT
 Requires: gst-plugins-good-data = %{version}-%{release}
+Requires: gst-plugins-good-filemap = %{version}-%{release}
 Requires: gst-plugins-good-lib = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
 Requires: gst-plugins-good-locales = %{version}-%{release}
@@ -72,11 +73,20 @@ Group: Default
 extras components for the gst-plugins-good package.
 
 
+%package filemap
+Summary: filemap components for the gst-plugins-good package.
+Group: Default
+
+%description filemap
+filemap components for the gst-plugins-good package.
+
+
 %package lib
 Summary: lib components for the gst-plugins-good package.
 Group: Libraries
 Requires: gst-plugins-good-data = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
+Requires: gst-plugins-good-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gst-plugins-good package.
@@ -162,6 +172,10 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %defattr(-,root,root,-)
 /usr/lib64/gstreamer-1.0/libgstqmlgl.so
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-gst-plugins-good
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/gstreamer-1.0/libgstalaw.so
@@ -227,6 +241,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gstreamer-1.0/libgstwavparse.so
 /usr/lib64/gstreamer-1.0/libgstximagesrc.so
 /usr/lib64/gstreamer-1.0/libgsty4menc.so
+/usr/share/clear/optimized-elf/other*
 
 %files license
 %defattr(0644,root,root,0755)
