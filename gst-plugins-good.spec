@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.20.5
-Release  : 86
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.5.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.5.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.20.5.tar.xz.asc
+Version  : 1.22.0
+Release  : 87
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.0.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.0.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1 MIT
@@ -31,16 +31,21 @@ BuildRequires : libsoup-dev
 BuildRequires : mesa-dev
 BuildRequires : mpg123-dev
 BuildRequires : nasm-bin
+BuildRequires : openssl-dev
 BuildRequires : orc-dev
 BuildRequires : pkgconfig(cairo-gobject)
 BuildRequires : pkgconfig(flac)
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
+BuildRequires : pkgconfig(gstreamer-1.0)
+BuildRequires : pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires : pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(libsoup-3.0)
+BuildRequires : pkgconfig(libxml-2.0)
+BuildRequires : pkgconfig(nettle)
 BuildRequires : pkgconfig(taglib)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(vpx)
@@ -49,6 +54,9 @@ BuildRequires : speex-dev
 BuildRequires : v4l-utils-dev
 BuildRequires : valgrind
 BuildRequires : wavpack-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 v4l2 plugins
@@ -109,13 +117,13 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.20.5
-cd %{_builddir}/gst-plugins-good-1.20.5
+%setup -q -n gst-plugins-good-1.22.0
+cd %{_builddir}/gst-plugins-good-1.22.0
 pushd ..
-cp -a gst-plugins-good-1.20.5 buildavx2
+cp -a gst-plugins-good-1.22.0 buildavx2
 popd
 pushd ..
-cp -a gst-plugins-good-1.20.5 buildavx512
+cp -a gst-plugins-good-1.22.0 buildavx512
 popd
 
 %build
@@ -123,15 +131,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1671552632
+export SOURCE_DATE_EPOCH=1674522939
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddiravx2
@@ -178,6 +186,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files lib
 %defattr(-,root,root,-)
+/usr/lib64/gstreamer-1.0/libgstadaptivedemux2.so
 /usr/lib64/gstreamer-1.0/libgstalaw.so
 /usr/lib64/gstreamer-1.0/libgstalpha.so
 /usr/lib64/gstreamer-1.0/libgstalphacolor.so
@@ -240,6 +249,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gstreamer-1.0/libgstwavpack.so
 /usr/lib64/gstreamer-1.0/libgstwavparse.so
 /usr/lib64/gstreamer-1.0/libgstximagesrc.so
+/usr/lib64/gstreamer-1.0/libgstxingmux.so
 /usr/lib64/gstreamer-1.0/libgsty4menc.so
 /usr/share/clear/optimized-elf/other*
 
