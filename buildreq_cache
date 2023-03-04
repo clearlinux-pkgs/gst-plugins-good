@@ -1,12 +1,10 @@
-1.22.0
+1.22.1
 libsoup-dev
 nasm-bin
 openssl-dev
 pkgconfig(cairo-gobject)
 pkgconfig(flac)
 pkgconfig(gdk-pixbuf-2.0)
-pkgconfig(gstreamer-1.0)
-pkgconfig(gstreamer-pbutils-1.0)
 pkgconfig(gtk+-3.0)
 pkgconfig(libpng)
 pkgconfig(libpulse)

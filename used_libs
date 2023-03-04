@@ -1,5 +1,4 @@
 libFLAC.so.12
-libGLESv2.so.2
 libQt5Core.so.5
 libQt5Gui.so.5
 libQt5Qml.so.5
@@ -44,7 +43,7 @@ libspeex.so.1
 libstdc++.so.6
 libtag.so.1
 libv4l2.so.0
-libvpx.so.7
+libvpx.so.8
 libwavpack.so.1
 libxml2.so.2
 libz.so.1
