@@ -1,4 +1,5 @@
 libFLAC.so.12
+libOpenGL.so.0
 libQt5Core.so.5
 libQt5Gui.so.5
 libQt5Qml.so.5
