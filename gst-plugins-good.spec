@@ -7,7 +7,7 @@
 #
 Name     : gst-plugins-good
 Version  : 1.22.2
-Release  : 95
+Release  : 96
 URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.2.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.2.tar.xz
 Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.2.tar.xz.asc
@@ -15,7 +15,6 @@ Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1 MIT
 Requires: gst-plugins-good-data = %{version}-%{release}
-Requires: gst-plugins-good-filemap = %{version}-%{release}
 Requires: gst-plugins-good-lib = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
 Requires: gst-plugins-good-locales = %{version}-%{release}
@@ -78,20 +77,11 @@ Group: Default
 extras components for the gst-plugins-good package.
 
 
-%package filemap
-Summary: filemap components for the gst-plugins-good package.
-Group: Default
-
-%description filemap
-filemap components for the gst-plugins-good package.
-
-
 %package lib
 Summary: lib components for the gst-plugins-good package.
 Group: Libraries
 Requires: gst-plugins-good-data = %{version}-%{release}
 Requires: gst-plugins-good-license = %{version}-%{release}
-Requires: gst-plugins-good-filemap = %{version}-%{release}
 
 %description lib
 lib components for the gst-plugins-good package.
@@ -128,15 +118,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681311214
+export SOURCE_DATE_EPOCH=1682978854
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddir
 ninja -v -C builddir
 CFLAGS="$CFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 -O3" CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3 -Wl,-z,x86-64-v3 " LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3" meson --libdir=lib64 --prefix=/usr --buildtype=plain -Dv4l2-gudev=disabled  builddiravx2
@@ -175,14 +165,142 @@ DESTDIR=%{buildroot} ninja -C builddir install
 
 %files extras
 %defattr(-,root,root,-)
+/V3/usr/lib64/gstreamer-1.0/libgstqmlgl.so
+/V4/usr/lib64/gstreamer-1.0/libgstqmlgl.so
 /usr/lib64/gstreamer-1.0/libgstqmlgl.so
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-gst-plugins-good
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/gstreamer-1.0/libgstadaptivedemux2.so
+/V3/usr/lib64/gstreamer-1.0/libgstalaw.so
+/V3/usr/lib64/gstreamer-1.0/libgstalpha.so
+/V3/usr/lib64/gstreamer-1.0/libgstalphacolor.so
+/V3/usr/lib64/gstreamer-1.0/libgstapetag.so
+/V3/usr/lib64/gstreamer-1.0/libgstaudiofx.so
+/V3/usr/lib64/gstreamer-1.0/libgstaudioparsers.so
+/V3/usr/lib64/gstreamer-1.0/libgstauparse.so
+/V3/usr/lib64/gstreamer-1.0/libgstautodetect.so
+/V3/usr/lib64/gstreamer-1.0/libgstavi.so
+/V3/usr/lib64/gstreamer-1.0/libgstcairo.so
+/V3/usr/lib64/gstreamer-1.0/libgstcutter.so
+/V3/usr/lib64/gstreamer-1.0/libgstdebug.so
+/V3/usr/lib64/gstreamer-1.0/libgstdeinterlace.so
+/V3/usr/lib64/gstreamer-1.0/libgstdtmf.so
+/V3/usr/lib64/gstreamer-1.0/libgsteffectv.so
+/V3/usr/lib64/gstreamer-1.0/libgstequalizer.so
+/V3/usr/lib64/gstreamer-1.0/libgstflac.so
+/V3/usr/lib64/gstreamer-1.0/libgstflv.so
+/V3/usr/lib64/gstreamer-1.0/libgstflxdec.so
+/V3/usr/lib64/gstreamer-1.0/libgstgdkpixbuf.so
+/V3/usr/lib64/gstreamer-1.0/libgstgoom.so
+/V3/usr/lib64/gstreamer-1.0/libgstgoom2k1.so
+/V3/usr/lib64/gstreamer-1.0/libgstgtk.so
+/V3/usr/lib64/gstreamer-1.0/libgsticydemux.so
+/V3/usr/lib64/gstreamer-1.0/libgstid3demux.so
+/V3/usr/lib64/gstreamer-1.0/libgstimagefreeze.so
+/V3/usr/lib64/gstreamer-1.0/libgstinterleave.so
+/V3/usr/lib64/gstreamer-1.0/libgstisomp4.so
+/V3/usr/lib64/gstreamer-1.0/libgstjpeg.so
+/V3/usr/lib64/gstreamer-1.0/libgstlevel.so
+/V3/usr/lib64/gstreamer-1.0/libgstmatroska.so
+/V3/usr/lib64/gstreamer-1.0/libgstmonoscope.so
+/V3/usr/lib64/gstreamer-1.0/libgstmpg123.so
+/V3/usr/lib64/gstreamer-1.0/libgstmulaw.so
+/V3/usr/lib64/gstreamer-1.0/libgstmultifile.so
+/V3/usr/lib64/gstreamer-1.0/libgstmultipart.so
+/V3/usr/lib64/gstreamer-1.0/libgstnavigationtest.so
+/V3/usr/lib64/gstreamer-1.0/libgstoss4.so
+/V3/usr/lib64/gstreamer-1.0/libgstossaudio.so
+/V3/usr/lib64/gstreamer-1.0/libgstpng.so
+/V3/usr/lib64/gstreamer-1.0/libgstpulseaudio.so
+/V3/usr/lib64/gstreamer-1.0/libgstreplaygain.so
+/V3/usr/lib64/gstreamer-1.0/libgstrtp.so
+/V3/usr/lib64/gstreamer-1.0/libgstrtpmanager.so
+/V3/usr/lib64/gstreamer-1.0/libgstrtsp.so
+/V3/usr/lib64/gstreamer-1.0/libgstshapewipe.so
+/V3/usr/lib64/gstreamer-1.0/libgstsmpte.so
+/V3/usr/lib64/gstreamer-1.0/libgstsoup.so
+/V3/usr/lib64/gstreamer-1.0/libgstspectrum.so
+/V3/usr/lib64/gstreamer-1.0/libgstspeex.so
+/V3/usr/lib64/gstreamer-1.0/libgsttaglib.so
+/V3/usr/lib64/gstreamer-1.0/libgstudp.so
+/V3/usr/lib64/gstreamer-1.0/libgstvideo4linux2.so
+/V3/usr/lib64/gstreamer-1.0/libgstvideobox.so
+/V3/usr/lib64/gstreamer-1.0/libgstvideocrop.so
+/V3/usr/lib64/gstreamer-1.0/libgstvideofilter.so
+/V3/usr/lib64/gstreamer-1.0/libgstvideomixer.so
+/V3/usr/lib64/gstreamer-1.0/libgstvpx.so
+/V3/usr/lib64/gstreamer-1.0/libgstwavenc.so
+/V3/usr/lib64/gstreamer-1.0/libgstwavpack.so
+/V3/usr/lib64/gstreamer-1.0/libgstwavparse.so
+/V3/usr/lib64/gstreamer-1.0/libgstximagesrc.so
+/V3/usr/lib64/gstreamer-1.0/libgstxingmux.so
+/V3/usr/lib64/gstreamer-1.0/libgsty4menc.so
+/V4/usr/lib64/gstreamer-1.0/libgstadaptivedemux2.so
+/V4/usr/lib64/gstreamer-1.0/libgstalaw.so
+/V4/usr/lib64/gstreamer-1.0/libgstalpha.so
+/V4/usr/lib64/gstreamer-1.0/libgstalphacolor.so
+/V4/usr/lib64/gstreamer-1.0/libgstapetag.so
+/V4/usr/lib64/gstreamer-1.0/libgstaudiofx.so
+/V4/usr/lib64/gstreamer-1.0/libgstaudioparsers.so
+/V4/usr/lib64/gstreamer-1.0/libgstauparse.so
+/V4/usr/lib64/gstreamer-1.0/libgstautodetect.so
+/V4/usr/lib64/gstreamer-1.0/libgstavi.so
+/V4/usr/lib64/gstreamer-1.0/libgstcairo.so
+/V4/usr/lib64/gstreamer-1.0/libgstcutter.so
+/V4/usr/lib64/gstreamer-1.0/libgstdebug.so
+/V4/usr/lib64/gstreamer-1.0/libgstdeinterlace.so
+/V4/usr/lib64/gstreamer-1.0/libgstdtmf.so
+/V4/usr/lib64/gstreamer-1.0/libgsteffectv.so
+/V4/usr/lib64/gstreamer-1.0/libgstequalizer.so
+/V4/usr/lib64/gstreamer-1.0/libgstflac.so
+/V4/usr/lib64/gstreamer-1.0/libgstflv.so
+/V4/usr/lib64/gstreamer-1.0/libgstflxdec.so
+/V4/usr/lib64/gstreamer-1.0/libgstgdkpixbuf.so
+/V4/usr/lib64/gstreamer-1.0/libgstgoom.so
+/V4/usr/lib64/gstreamer-1.0/libgstgoom2k1.so
+/V4/usr/lib64/gstreamer-1.0/libgstgtk.so
+/V4/usr/lib64/gstreamer-1.0/libgsticydemux.so
+/V4/usr/lib64/gstreamer-1.0/libgstid3demux.so
+/V4/usr/lib64/gstreamer-1.0/libgstimagefreeze.so
+/V4/usr/lib64/gstreamer-1.0/libgstinterleave.so
+/V4/usr/lib64/gstreamer-1.0/libgstisomp4.so
+/V4/usr/lib64/gstreamer-1.0/libgstjpeg.so
+/V4/usr/lib64/gstreamer-1.0/libgstlevel.so
+/V4/usr/lib64/gstreamer-1.0/libgstmatroska.so
+/V4/usr/lib64/gstreamer-1.0/libgstmonoscope.so
+/V4/usr/lib64/gstreamer-1.0/libgstmpg123.so
+/V4/usr/lib64/gstreamer-1.0/libgstmulaw.so
+/V4/usr/lib64/gstreamer-1.0/libgstmultifile.so
+/V4/usr/lib64/gstreamer-1.0/libgstmultipart.so
+/V4/usr/lib64/gstreamer-1.0/libgstnavigationtest.so
+/V4/usr/lib64/gstreamer-1.0/libgstoss4.so
+/V4/usr/lib64/gstreamer-1.0/libgstossaudio.so
+/V4/usr/lib64/gstreamer-1.0/libgstpng.so
+/V4/usr/lib64/gstreamer-1.0/libgstpulseaudio.so
+/V4/usr/lib64/gstreamer-1.0/libgstreplaygain.so
+/V4/usr/lib64/gstreamer-1.0/libgstrtp.so
+/V4/usr/lib64/gstreamer-1.0/libgstrtpmanager.so
+/V4/usr/lib64/gstreamer-1.0/libgstrtsp.so
+/V4/usr/lib64/gstreamer-1.0/libgstshapewipe.so
+/V4/usr/lib64/gstreamer-1.0/libgstsmpte.so
+/V4/usr/lib64/gstreamer-1.0/libgstsoup.so
+/V4/usr/lib64/gstreamer-1.0/libgstspectrum.so
+/V4/usr/lib64/gstreamer-1.0/libgstspeex.so
+/V4/usr/lib64/gstreamer-1.0/libgsttaglib.so
+/V4/usr/lib64/gstreamer-1.0/libgstudp.so
+/V4/usr/lib64/gstreamer-1.0/libgstvideo4linux2.so
+/V4/usr/lib64/gstreamer-1.0/libgstvideobox.so
+/V4/usr/lib64/gstreamer-1.0/libgstvideocrop.so
+/V4/usr/lib64/gstreamer-1.0/libgstvideofilter.so
+/V4/usr/lib64/gstreamer-1.0/libgstvideomixer.so
+/V4/usr/lib64/gstreamer-1.0/libgstvpx.so
+/V4/usr/lib64/gstreamer-1.0/libgstwavenc.so
+/V4/usr/lib64/gstreamer-1.0/libgstwavpack.so
+/V4/usr/lib64/gstreamer-1.0/libgstwavparse.so
+/V4/usr/lib64/gstreamer-1.0/libgstximagesrc.so
+/V4/usr/lib64/gstreamer-1.0/libgstxingmux.so
+/V4/usr/lib64/gstreamer-1.0/libgsty4menc.so
 /usr/lib64/gstreamer-1.0/libgstadaptivedemux2.so
 /usr/lib64/gstreamer-1.0/libgstalaw.so
 /usr/lib64/gstreamer-1.0/libgstalpha.so
@@ -248,7 +366,6 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/gstreamer-1.0/libgstximagesrc.so
 /usr/lib64/gstreamer-1.0/libgstxingmux.so
 /usr/lib64/gstreamer-1.0/libgsty4menc.so
-/usr/share/clear/optimized-elf/other*
 
 %files license
 %defattr(0644,root,root,0755)
