@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.22.4
-Release  : 104
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.4.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.4.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.4.tar.xz.asc
+Version  : 1.22.5
+Release  : 105
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.5.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.5.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.22.5.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause LGPL-2.1 MIT
@@ -104,13 +104,13 @@ locales components for the gst-plugins-good package.
 
 
 %prep
-%setup -q -n gst-plugins-good-1.22.4
-cd %{_builddir}/gst-plugins-good-1.22.4
+%setup -q -n gst-plugins-good-1.22.5
+cd %{_builddir}/gst-plugins-good-1.22.5
 pushd ..
-cp -a gst-plugins-good-1.22.4 buildavx2
+cp -a gst-plugins-good-1.22.5 buildavx2
 popd
 pushd ..
-cp -a gst-plugins-good-1.22.4 buildavx512
+cp -a gst-plugins-good-1.22.5 buildavx512
 popd
 
 %build
@@ -118,7 +118,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1687297562
+export SOURCE_DATE_EPOCH=1689875902
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
