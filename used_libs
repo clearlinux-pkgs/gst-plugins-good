@@ -35,9 +35,9 @@ libpng16.so.16
 libpulse.so.0
 libspeex.so.1
 libstdc++.so.6
-libtag.so.1
+libtag.so.2
 libv4l2.so.0
-libvpx.so.8
+libvpx.so.9
 libwavpack.so.1
 libxml2.so.2
 libz.so.1
