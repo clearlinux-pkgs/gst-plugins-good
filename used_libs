@@ -1,5 +1,11 @@
 libFLAC.so.12
+libGLESv2.so.2
+libQt6Core.so.6
+libQt6Gui.so.6
+libQt6Qml.so.6
+libQt6Quick.so.6
 libX11.so.6
+libXtst.so.6
 libbz2.so.1.0
 libc.so.6
 libcairo-gobject.so.2
