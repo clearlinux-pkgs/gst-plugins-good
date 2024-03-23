@@ -1,16 +1,12 @@
-1.24.0
+1.24.1
 nasm-bin
 openssl-dev
 pkgconfig(cairo-gobject)
 pkgconfig(flac)
 pkgconfig(gdk-pixbuf-2.0)
-pkgconfig(gstreamer-1.0)
-pkgconfig(gstreamer-pbutils-1.0)
 pkgconfig(gtk+-3.0)
 pkgconfig(libpng)
 pkgconfig(libpulse)
 pkgconfig(nettle)
-pkgconfig(opencore-amrnb)
-pkgconfig(opencore-amrwb)
 pkgconfig(taglib)
 pkgconfig(xtst)
