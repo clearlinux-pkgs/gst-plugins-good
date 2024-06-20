@@ -1,4 +1,4 @@
-1.24.4
+1.24.5
 nasm-bin
 openssl-dev
 pkgconfig(cairo-gobject)
