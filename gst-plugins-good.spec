@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.24.8
-Release  : 128
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.24.8.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.24.8.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.24.8.tar.xz.asc
+Version  : 1.24.9
+Release  : 129
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.24.9.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.24.9.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.24.9.tar.xz.asc
 Source2  : 5D2EEE6F6F349D7C.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -32,7 +32,6 @@ BuildRequires : libjpeg-turbo-dev
 BuildRequires : mesa-dev
 BuildRequires : mpg123-dev
 BuildRequires : nasm-bin
-BuildRequires : openssl-dev
 BuildRequires : orc-dev
 BuildRequires : pkgconfig(cairo-gobject)
 BuildRequires : pkgconfig(flac)
@@ -41,7 +40,6 @@ BuildRequires : pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(libpulse)
-BuildRequires : pkgconfig(nettle)
 BuildRequires : pkgconfig(taglib)
 BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(vpx)
@@ -102,13 +100,13 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 5D2EEE6F6F349D7C' gpg.status
-%setup -q -n gst-plugins-good-1.24.8
-cd %{_builddir}/gst-plugins-good-1.24.8
+%setup -q -n gst-plugins-good-1.24.9
+cd %{_builddir}/gst-plugins-good-1.24.9
 pushd ..
-cp -a gst-plugins-good-1.24.8 buildavx2
+cp -a gst-plugins-good-1.24.9 buildavx2
 popd
 pushd ..
-cp -a gst-plugins-good-1.24.8 buildavx512
+cp -a gst-plugins-good-1.24.9 buildavx512
 popd
 
 %build
@@ -116,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1726846443
+export SOURCE_DATE_EPOCH=1730389272
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
