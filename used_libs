@@ -43,7 +43,7 @@ libspeex.so.1
 libstdc++.so.6
 libtag.so.2
 libv4l2.so.0
-libvpx.so.9
+libvpx.so.11
 libwavpack.so.1
-libxml2.so.2
+libxml2.so.16
 libz.so.1
