@@ -8,11 +8,11 @@
 # Source0 file verified with key 0x5D2EEE6F6F349D7C (tim@centricular.com)
 #
 Name     : gst-plugins-good
-Version  : 1.26.2
-Release  : 143
-URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.2.tar.xz
-Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.2.tar.xz
-Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.2.tar.xz.asc
+Version  : 1.26.3
+Release  : 144
+URL      : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.3.tar.xz
+Source0  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.3.tar.xz
+Source1  : https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-good-1.26.3.tar.xz.asc
 Source2  : 5D2EEE6F6F349D7C.pkey
 Summary  : No detailed summary available
 Group    : Development/Tools
@@ -103,13 +103,13 @@ chmod 700 .gnupg
 gpg --homedir .gnupg --import %{SOURCE2}
 gpg --homedir .gnupg --status-fd 1 --verify %{SOURCE1} %{SOURCE0} > gpg.status
 grep -E '^\[GNUPG:\] (GOODSIG|EXPKEYSIG) 5D2EEE6F6F349D7C' gpg.status
-%setup -q -n gst-plugins-good-1.26.2
-cd %{_builddir}/gst-plugins-good-1.26.2
+%setup -q -n gst-plugins-good-1.26.3
+cd %{_builddir}/gst-plugins-good-1.26.3
 pushd ..
-cp -a gst-plugins-good-1.26.2 buildavx2
+cp -a gst-plugins-good-1.26.3 buildavx2
 popd
 pushd ..
-cp -a gst-plugins-good-1.26.2 buildavx512
+cp -a gst-plugins-good-1.26.3 buildavx512
 popd
 
 %build
@@ -117,7 +117,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1748617637
+export SOURCE_DATE_EPOCH=1751037900
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
